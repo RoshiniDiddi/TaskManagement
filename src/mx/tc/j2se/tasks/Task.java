@@ -2,6 +2,21 @@ package mx.tc.j2se.tasks;
 
 public class Task {
     String title;
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "title='" + title + '\'' +
+                ", status=" + status +
+                ", repeat=" + repeat +
+                ", time=" + time +
+                ", start=" + start +
+                ", end=" + end +
+                ", interval=" + interval +
+                ", current=" + current +
+                '}';
+    }
+
     boolean status,repeat;
     int time;
     int start;
@@ -10,6 +25,13 @@ public class Task {
     int current;
     //constructor for non-repetitive task
     Task(String title, int time){
+        try {
+            if (time < 0) {
+                throw new IllegalArgumentException("Time labels cannot be negative");
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         this.title=title;
         this.time=time;
         this.repeat=false;
@@ -17,6 +39,18 @@ public class Task {
     }
     //constructor for repetitive task
     Task (String title, int start, int end, int interval){
+        try{
+            if(start<0 || end<0) {
+                throw new IllegalArgumentException("Time labels cannot be negative");
+            }
+
+            if (interval < 0) {
+                throw new IllegalArgumentException("The interval of tasks repeating should be more than zero.");
+            }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         this.title=title;
         this.start=start;
         this.end=end;

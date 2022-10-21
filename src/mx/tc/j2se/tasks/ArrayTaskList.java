@@ -20,9 +20,9 @@ public class ArrayTaskList<task> {
         }
         elementData[size++]=task;
     }
-    boolean remove (Task task){
+    boolean remove (Task task) {
         for(int i=0;i<size;i++){
-            if(elementData[i].getTitle()==task.getTitle()){
+            if(elementData[i]==task){
                 for(int j=i;j<size;j++)
                 {
                     elementData[j]=elementData[j+1];
@@ -37,6 +37,14 @@ public class ArrayTaskList<task> {
         return this.size;
     }
     public Task getTask(int index){
+        try {
+            if (index < 0 || index >= size) {
+                throw new IndexOutOfBoundsException("The task of index " + index + " is not available");
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+
+        }
         return elementData[index];
     }
     public void display() {
