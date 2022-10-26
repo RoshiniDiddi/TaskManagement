@@ -1,11 +1,14 @@
 package mx.tc.j2se.tasks;
+
+import static java.lang.System.exit;
+
 public class Main {
     public static void main(String[] args) {
         Task t1=new Task("Morning Run",3,15,2);
         Task t2=new Task("Reading Book",8,10,2);
         Task t3=new Task("Playing badminton",9);
-        Task t4=new Task("Running",-1,5,2);
-        System.out.println("Executed");
+        //Task t4=new Task("Running",-1,5,2);
+        //System.out.println("Executed");
         /***
          * Task 1
          * if(t1.isRepeated()){
@@ -31,6 +34,8 @@ public class Main {
         atl.getTask(15); // exception occurs
 
         atl.incoming(5,10).display();**/
+        /**
+         Task 2
         LinkedTaskList ltl =new LinkedTaskList();
         ltl.add(t1);
         ltl.add(t2);
@@ -38,5 +43,27 @@ public class Main {
         //ltl.display();
         ltl.remove(t2);
         ltl.display();
+        ltl.incoming(3,10).display();
+         **/
+        //Task 4
+        //ArrayTaskList using Abstract class
+        //TaskListFactory tlf=new TaskListFactory();
+        /**AbstractTaskList at=tlf.createTaskList(ListTypes.types.ARRAY);
+        at.add(t1);
+        at.add(t2);
+        at.add(t3);
+        at.display();
+        at.remove(t1);
+        at.display();
+         **/
+        /**AbstractTaskList at=tlf.createTaskList(ListTypes.types.LINKED);
+        at.add(t1);
+        at.add(t2);
+        at.add(t3);
+        at.display();
+        at.remove(t1);
+        at.display();
+         **/
+
     }
 }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ab88d4d-0702-4341-ab39-708429290f21" name="Changes" comment="Task 2">
-      <change afterPath="$PROJECT_DIR$/src/mx/tc/j2se/tasks/LinkedTaskList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mx/tc/j2se/tasks/TaskNotFoundException.java" afterDir="false" />
+    <list default="true" id="6ab88d4d-0702-4341-ab39-708429290f21" name="Changes" comment="practice 3&#10;Exception handling and Linked list">
+      <change afterPath="$PROJECT_DIR$/src/mx/tc/j2se/tasks/AbstractTaskList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mx/tc/j2se/tasks/ListTypes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mx/tc/j2se/tasks/TaskListFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mx/tc/j2se/tasks/ArrayTaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/tc/j2se/tasks/ArrayTaskList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mx/tc/j2se/tasks/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/tc/j2se/tasks/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mx/tc/j2se/tasks/LinkedTaskList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mx/tc/j2se/tasks/LinkedTaskList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +68,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666331408954</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="practice 3&#10;Exception handling and Linked list">
+      <created>1666355388627</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666355388627</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -83,7 +91,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Task 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task 2" />
+    <MESSAGE value="practice 3&#10;Exception handling and Linked list" />
+    <option name="LAST_COMMIT_MESSAGE" value="practice 3&#10;Exception handling and Linked list" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

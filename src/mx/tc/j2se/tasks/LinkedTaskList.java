@@ -22,7 +22,7 @@ class Node{
         this.next = nextNode;
     }
 }
-public class LinkedTaskList {
+public class LinkedTaskList extends AbstractTaskList {
     Node head;
 
     public void add(Task task) {
@@ -50,12 +50,13 @@ public class LinkedTaskList {
             System.out.println( currentNode.getData().toString());
         }
     }
-    public void remove(Task task){
+    public boolean remove(Task task){
         Node currentNode=head;
         Node prev=null;
         //if task is in first node
         if(currentNode!=null && currentNode.data==task){
             head=currentNode.next;
+            return true;
         }
         //if task is in last node
         while(currentNode!=null && currentNode.data!=task){
@@ -67,7 +68,40 @@ public class LinkedTaskList {
         }
         //if task not present
         if(currentNode==null){
-            return;
+            return false;
         }
+        return true;
+    }
+    public int size(){
+        Node temp=head;
+        int count=0;
+        while(temp!=null){
+            temp=temp.next;
+            count++;
+        }
+        return count;
+    }
+    public Task getTask(int index){
+        Node currentNode=head;
+        int count=0;
+        while(currentNode!=null){
+            if(count==index){
+                return currentNode.data;
+            }
+            count++;
+            currentNode=currentNode.next;
+        }
+        return currentNode.data;
+    }
+    public LinkedTaskList incoming(int from ,int to){
+        LinkedTaskList res=new LinkedTaskList();
+        Node temp=head;
+        while(temp!=null){
+            if(temp.getData().getStartTime()>=from && temp.getData().getEndTime()<=to){
+                res.add(temp.getData());
+            }
+            temp=temp.next;
+        }
+        return res;
     }
 }

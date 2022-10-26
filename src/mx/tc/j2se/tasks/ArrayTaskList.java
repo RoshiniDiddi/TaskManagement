@@ -3,7 +3,7 @@ package mx.tc.j2se.tasks;
 
 import java.util.Arrays;
 
-public class ArrayTaskList<task> {
+public class ArrayTaskList<task> extends AbstractTaskList{
     private static final int INITIAL_CAPACITY = 10;
     private int size = 0;
     private Task elementData[] = {};
@@ -20,7 +20,7 @@ public class ArrayTaskList<task> {
         }
         elementData[size++]=task;
     }
-    boolean remove (Task task) {
+    public boolean remove (Task task) {
         for(int i=0;i<size;i++){
             if(elementData[i]==task){
                 for(int j=i;j<size;j++)
