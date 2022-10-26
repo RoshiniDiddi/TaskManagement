@@ -1,4 +1,6 @@
 package mx.tc.j2se.tasks;
+import java.util.Iterator;
+import java.util.Objects;
 
 public abstract class AbstractTaskList {
     int size;
@@ -16,5 +18,59 @@ public abstract class AbstractTaskList {
     }
     public Task getTask(int index){
         return Task;
+    }
+
+    /**
+     * This method allows the program iterate over all the elements in the array or list
+     *
+     * @return return the iterator object which allows to iterate the list
+     */
+    public Iterator<Task> iterator() {
+        Iterator < Task > iter = new Iterator < Task > (){
+            private int currentIndex=0;
+            @Override
+            public boolean hasNext() {
+                return currentIndex < size();
+            }
+
+            @Override
+            public mx.tc.j2se.tasks.Task next() {
+                if(hasNext()){
+                    return getTask(currentIndex++);
+                }
+                else {
+                    throw new UnsupportedOperationException("Not Supported");
+                }
+            }
+        };
+        return iter;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof AbstractTaskList){
+            AbstractTaskList tempList=(AbstractTaskList) o;
+            if (this.size() == 0 && tempList.size() == 0) {
+                return true;
+            }
+            else if(this.size()== tempList.size()){
+                Iterator<Task> list1=this.iterator();
+                Iterator<Task> list2=(tempList.iterator());
+                while(list1.hasNext()){
+                    Object o1=list1.next();
+                    Object o2=list2.next();
+                    if(!(o1==null ? o2==null:o1.equals(o2))){
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(size, Task);
     }
 }

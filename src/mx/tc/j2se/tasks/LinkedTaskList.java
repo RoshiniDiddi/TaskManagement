@@ -24,7 +24,7 @@ class Node{
 }
 public class LinkedTaskList extends AbstractTaskList {
     Node head;
-
+    /** This method is used to add new task into LinkedTaskList**/
     public void add(Task task) {
         Node new_node = new Node(task);
 
@@ -38,7 +38,7 @@ public class LinkedTaskList extends AbstractTaskList {
             currentNode.setNextNode(new_node);
         }
     }
-
+    /** This method is used to display the tasks in the list**/
     public void  display() {
         if (head != null) {
             Node currentNode = head;
@@ -50,6 +50,8 @@ public class LinkedTaskList extends AbstractTaskList {
             System.out.println( currentNode.getData().toString());
         }
     }
+    /** This method is used to remove a task from the list
+     * @return return true if task is removed**/
     public boolean remove(Task task){
         Node currentNode=head;
         Node prev=null;
@@ -72,6 +74,7 @@ public class LinkedTaskList extends AbstractTaskList {
         }
         return true;
     }
+    /** This method returns the size of the list**/
     public int size(){
         Node temp=head;
         int count=0;
@@ -81,6 +84,7 @@ public class LinkedTaskList extends AbstractTaskList {
         }
         return count;
     }
+    /** This method is used to get the task present at particular index**/
     public Task getTask(int index){
         Node currentNode=head;
         int count=0;
@@ -93,6 +97,7 @@ public class LinkedTaskList extends AbstractTaskList {
         }
         return currentNode.data;
     }
+    /** This method returns a list of tasks which are present between from and to time **/
     public LinkedTaskList incoming(int from ,int to){
         LinkedTaskList res=new LinkedTaskList();
         Node temp=head;
