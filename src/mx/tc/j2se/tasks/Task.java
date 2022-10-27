@@ -1,5 +1,8 @@
 package mx.tc.j2se.tasks;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 public class Task {
     String title;
 
@@ -18,15 +21,15 @@ public class Task {
     }
 
     boolean status,repeat;
-    int time;
-    int start;
-    int end;
-    int interval;
-    int current;
+    LocalDateTime time;
+    LocalDateTime start;
+    LocalDateTime end;
+    long interval;
+    LocalDateTime current;
     /*constructor for non-repetitive task*/
-    Task(String title, int time){
+    Task(String title, LocalDateTime time){
         try {
-            if (time < 0) {
+            if (time.getHour() < 0 && time.getMinute()<0) {
                 throw new IllegalArgumentException("Time labels cannot be negative");
             }
         }catch(Exception e){
@@ -38,13 +41,13 @@ public class Task {
         this.status=true;
     }
     /*constructor for repetitive task*/
-    Task (String title, int start, int end, int interval){
+    Task (String title, LocalDateTime start, LocalDateTime end, long interval){
         try{
-            if(start<0 || end<0) {
+            if(start.getHour()<0 || end.getHour()<0 || start.getMinute()<0 || end.getMinute()<0) {
                 throw new IllegalArgumentException("Time labels cannot be negative");
             }
 
-            if (interval < 0) {
+            if (interval< 0) {
                 throw new IllegalArgumentException("The interval of tasks repeating should be more than zero.");
             }
         }
@@ -74,7 +77,7 @@ public class Task {
     /**this method returns start time for repetitive tasks and
     time of execution for non-repetitive task
     **/
-    public int getTime() {
+    public LocalDateTime getTime() {
         if(isRepeated()){
             return getStartTime();
         }
@@ -83,7 +86,7 @@ public class Task {
     /**this method sets the time of execution for non-repetitive task
     if task is repetitive then change repeat a boolean to false
      **/
-    public void setTime(int time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
         if(isRepeated()){
             repeat=false;
@@ -93,7 +96,7 @@ public class Task {
     this method returns time of execution for non-repetitive task
     and start time for repetitive task
      **/
-    public int getStartTime() {
+    public LocalDateTime getStartTime() {
         if(!isRepeated()) {
             return time ;
         }
@@ -104,19 +107,19 @@ public class Task {
     this method returns time of execution for non-repetitive task
     and end time for repetitive task
      **/
-    public int getEndTime() {
+    public LocalDateTime getEndTime() {
         if(!isRepeated()) {
             return time;
         }
         return end;
     }
-    public int getCurrentTime(){
+    public LocalDateTime getCurrentTime(){
         return this.current;
     }
     /** this method returns the interval of repetitive task
-    * if task id non repetitive then it returns 0
+    * if task id non-repetitive then it returns 0
     **/
-    public int getRepeatInterval(){
+    public long getRepeatInterval(){
         if(!isRepeated()){
             return 0;
         }
@@ -126,7 +129,7 @@ public class Task {
     this method sets start time, end time and repetition interval for repetitive task
     and if task is non-repetitive task it is changed to repetitive
      **/
-    public void setTime(int start, int end, int interval){
+    public void setTime(LocalDateTime start, LocalDateTime end, long interval){
         if(!isRepeated()){
             repeat=true;
         }
@@ -138,16 +141,17 @@ public class Task {
     public boolean isRepeated(){
         return repeat;
     }
+
     /** This method returns next startTime of the task**/
-    public int nextTimeAfter (int current){
-        if(current < end) {
+    public LocalDateTime nextTimeAfter (LocalDateTime current){
+        if(current.plusHours(interval).isBefore(end)){
             status=true;
-            current += interval;
+            current=current.plusHours(interval);
             return current;
         }
         else{
             status=false;
-            return -1;
+            return LocalDateTime.parse("-1");
         }
     }
 }

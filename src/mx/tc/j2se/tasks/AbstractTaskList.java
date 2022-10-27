@@ -26,7 +26,7 @@ public abstract class AbstractTaskList {
      * @return return the iterator object which allows to iterate the list
      */
     public Iterator<Task> iterator() {
-        Iterator < Task > iter = new Iterator < Task > (){
+        Iterator < Task > it = new Iterator < Task > (){
             private int currentIndex=0;
             @Override
             public boolean hasNext() {
@@ -43,9 +43,9 @@ public abstract class AbstractTaskList {
                 }
             }
         };
-        return iter;
+        return it;
     }
-
+    /** This method returns **/
     @Override
     public boolean equals(Object o) {
         if (o instanceof AbstractTaskList){
@@ -69,8 +69,5 @@ public abstract class AbstractTaskList {
         return false;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(size, Task);
-    }
+
 }

@@ -1,18 +1,16 @@
 package mx.tc.j2se.tasks;
 
-import com.sun.xml.internal.bind.v2.runtime.output.StAXExStreamWriterOutput;
-
-import java.sql.SQLOutput;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
 import java.util.Iterator;
-
-import static java.lang.System.exit;
 
 public class Main {
     public static void main(String[] args) {
-        Task t1=new Task("Morning Run",3,15,2);
+        /*Task t1=new Task("Morning Run",3,15,2);
         Task t2=new Task("Reading Book",8,10,2);
         Task t3=new Task("Playing badminton",9);
-        Task t4=new Task("Running",-1,5,2);
+        Task t4=new Task("Running",-1,5,2);*/
         //Task 1
         /** Working of methods inside Task Class**/
         /*
@@ -40,7 +38,7 @@ public class Main {
         atl.remove(t2);
         atl.display();
         System.out.println(atl.size());
-        atl.getTask(15); // exception occurs
+        //atl.getTask(15); // exception occurs
 
         atl.incoming(5,10).display();*/
         //Task 2
@@ -61,17 +59,19 @@ public class Main {
         //Task 4
         /** ArrayTaskList using Abstract class
          * Creation of object for TaskListFactory **/
-        TaskListFactory tlf=new TaskListFactory();
+        /*TaskListFactory tlf=new TaskListFactory();
         AbstractTaskList at=tlf.createTaskList(ListTypes.types.ARRAY);
         at.add(t1);
         at.add(t2);
         at.add(t3);
-
+        */
         /** Iterator for ArrayTaskList**/
-        /*Iterator<Task> it=at.iterator();
+        /*
+        Iterator<Task> it=at.iterator();
         while(it.hasNext()){
             System.out.println(it.next().toString());
-        }
+        }*/
+        /*
         at.display();
         at.remove(t1);
         at.display();
@@ -83,29 +83,52 @@ public class Main {
         at.add(t3);
         */
         /** Iterator for ArrayTaskList**/
-        /*
-        Iterator<Task> it=at.iterator();
+
+        /*Iterator<Task> it=at.iterator();
         while(it.hasNext()){
             System.out.println(it.next().toString());
         }
+
         at.display();
         at.remove(t1);
         at.display();
         */
         //Task 5
-        AbstractTaskList at1=tlf.createTaskList(ListTypes.types.ARRAY);
+        /** Creating object for abstractTaskList and implementing equals() and hashCode() methods**/
+        /*AbstractTaskList at1=tlf.createTaskList(ListTypes.types.ARRAY);
         at1.add(t1);
         at1.add(t2);
         at1.add(t3);
-        System.out.println(at.hashCode());
-        System.out.println(at1.hashCode());
-        /*if(at==at1){
+        int hashValueat=at.hashCode();
+        int hashValueatl=atl.hashCode();
+        int hashValueat1=at1.hashCode();
+        System.out.println(hashValueat);
+        System.out.println(hashValueat1 );
+        System.out.println(hashValueatl);
+        *//*if(at==at1){
             System.out.println("True");
         }
         else{
             System.out.println("False");
-        }*/
+        }*//*
         System.out.println(at1.equals(at));
-        //System.out.println(at==at1);
+        //System.out.println(at==at1);*/
+        Task tk1=new Task("Lunch with Beautiful girl", LocalDateTime.of(2022, Month.valueOf("AUGUST"),24,16,00));
+        Task tk2=new Task("Morning run",LocalDateTime.of(2022, Month.valueOf("MARCH"),1,8,15),LocalDateTime.of(2022, Month.valueOf("SEPTEMBER"),1,8,15), 46);
+        Task tk3=new Task("Taking Medication",LocalDateTime.of(2022,Month.valueOf("AUGUST"),20,8,15),LocalDateTime.of(2022,Month.valueOf("AUGUST"),20,8,15),12);
+        Task tk4=new Task("Meeting with friends",LocalDateTime.of(2022,Month.valueOf("SEPTEMBER"),1,18,0));
+        //System.out.println(tk2.nextTimeAfter(LocalDateTime.of(2022, Month.valueOf("AUGUST"),24,8,15)));
+        TaskListFactory tlf=new TaskListFactory();
+        AbstractTaskList at=tlf.createTaskList(ListTypes.types.ARRAY);
+        at.add(tk1);
+        at.add(tk2);
+        at.add(tk3);
+        at.add(tk4);
+        Iterator<Task> it=at.iterator();
+        Tasks tks=new Tasks();
+        Iterator<Task> iter=tks.incoming(it,LocalDateTime.of(2022,Month.valueOf("AUGUST"),25,8,0),LocalDateTime.of(2022,Month.valueOf("AUGUST"),26,8,0));
+        while(iter.hasNext()){
+            System.out.println(iter.next().getTitle());
+        }
     }
 }
