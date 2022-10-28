@@ -23,13 +23,18 @@ public class Tasks {
             Task temp=tasks.next();
             //System.out.println(temp.getTitle());
             //abs.display();
-            //System.out.println(tasks.next().getStartTime());
-            //System.out.println(tasks.next().getEndTime());
-            if (temp.getStartTime().isAfter(start) && temp.getStartTime().isBefore(end)) {
+            /*System.out.println(tasks.next().getStartTime());
+            System.out.println("is After:"+temp.getStartTime().isAfter(start));
+            System.out.println("is Before:"+temp.getEndTime().isBefore(end));*/
+
+            //System.out.println(temp.getEndTime()+"  "+end+"   "+temp.getEndTime().isAfter(end) );
+            //System.out.println(temp.getStartTime().isBefore(start));
+
+            if (temp.getEndTime().isAfter(end) && temp.getStartTime().isBefore(start)) {
                 abs.add(temp);
             }
         }
-        abs.display();
+        //abs.display();
         /*Iterator<Task> itr=abs.iterator();
         while(itr.hasNext()){
             /*System.out.println(itr.next().getTitle()+" "+itr.next().getStartTime());
