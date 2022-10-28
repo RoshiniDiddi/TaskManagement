@@ -46,15 +46,10 @@ public class ArrayTaskList<task> extends AbstractTaskList{
     /** This method is used to get the task present at particular index**/
     @Override
     public Task getTask(int index){
-        try {
-            if (index < 0 || index >= size) {
-                throw new IndexOutOfBoundsException("The task of index " + index + " is not available");
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-
+        if (index < 0 || index > size()) {
+            throw new IndexOutOfBoundsException("The task of index " + index + " is not available");
         }
-        return elementData[index];
+        else{return elementData[index];}
     }
     /** This method is used to display the tasks in the list**/
     @Override

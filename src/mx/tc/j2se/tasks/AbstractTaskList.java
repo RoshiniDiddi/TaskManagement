@@ -27,20 +27,15 @@ public abstract class AbstractTaskList {
      */
     public Iterator<Task> iterator() {
         Iterator < Task > it = new Iterator < Task > (){
-            private int currentIndex=0;
+            public int currentIndex=0;
             @Override
             public boolean hasNext() {
-                return currentIndex < size();
+                return currentIndex < size() && getTask(currentIndex)!=null;
             }
 
             @Override
-            public mx.tc.j2se.tasks.Task next() {
-                if(hasNext()){
-                    return getTask(currentIndex++);
-                }
-                else {
-                    throw new UnsupportedOperationException("Not Supported");
-                }
+            public Task next() {
+                return getTask(currentIndex++);
             }
         };
         return it;

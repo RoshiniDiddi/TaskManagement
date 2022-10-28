@@ -57,16 +57,19 @@ public class Main {
         ltl.incoming(3,10).display();
          */
         //Task 4
-        /** ArrayTaskList using Abstract class
-         * Creation of object for TaskListFactory **/
-        /*TaskListFactory tlf=new TaskListFactory();
+        /*Task t1=new Task("Lunch with Beautiful girl", LocalDateTime.of(2022, Month.valueOf("AUGUST"),24,16,00));
+        Task t2=new Task("Morning run",LocalDateTime.of(2022, Month.valueOf("MARCH"),1,8,15),LocalDateTime.of(2022, Month.valueOf("SEPTEMBER"),1,8,15), 46);
+        Task t3=new Task("Taking Medication",LocalDateTime.of(2022,Month.valueOf("AUGUST"),20,8,15),LocalDateTime.of(2022,Month.valueOf("AUGUST"),20,8,15),12);
+        Task t4=new Task("Meeting with friends",LocalDateTime.of(2022,Month.valueOf("SEPTEMBER"),1,18,0));
+        *//** ArrayTaskList using Abstract class
+         * Creation of object for TaskListFactory **//*
+        TaskListFactory tlf=new TaskListFactory();
         AbstractTaskList at=tlf.createTaskList(ListTypes.types.ARRAY);
         at.add(t1);
         at.add(t2);
         at.add(t3);
-        */
-        /** Iterator for ArrayTaskList**/
-        /*
+
+        *//** Iterator for ArrayTaskList**//*
         Iterator<Task> it=at.iterator();
         while(it.hasNext()){
             System.out.println(it.next().toString());
@@ -114,8 +117,8 @@ public class Main {
         System.out.println(at1.equals(at));
         //System.out.println(at==at1);*/
         Task tk1=new Task("Lunch with Beautiful girl", LocalDateTime.of(2022, Month.valueOf("AUGUST"),24,16,00));
-        Task tk2=new Task("Morning run",LocalDateTime.of(2022, Month.valueOf("MARCH"),1,8,15),LocalDateTime.of(2022, Month.valueOf("SEPTEMBER"),1,8,15), 46);
-        Task tk3=new Task("Taking Medication",LocalDateTime.of(2022,Month.valueOf("AUGUST"),20,8,15),LocalDateTime.of(2022,Month.valueOf("AUGUST"),20,8,15),12);
+        Task tk2=new Task("Morning run",LocalDateTime.of(2022, Month.valueOf("MARCH"),1,8,15),LocalDateTime.of(2022, Month.valueOf("SEPTEMBER"),1,8,15), 24);
+        Task tk3=new Task("Taking Medication",LocalDateTime.of(2022,Month.valueOf("AUGUST"),20,8,15),LocalDateTime.of(2022,Month.valueOf("SEPTEMBER"),28,8,15),12);
         Task tk4=new Task("Meeting with friends",LocalDateTime.of(2022,Month.valueOf("SEPTEMBER"),1,18,0));
         //System.out.println(tk2.nextTimeAfter(LocalDateTime.of(2022, Month.valueOf("AUGUST"),24,8,15)));
         TaskListFactory tlf=new TaskListFactory();
@@ -124,9 +127,13 @@ public class Main {
         at.add(tk2);
         at.add(tk3);
         at.add(tk4);
+        //at.display();
         Iterator<Task> it=at.iterator();
-        Tasks tks=new Tasks();
-        Iterator<Task> iter=tks.incoming(it,LocalDateTime.of(2022,Month.valueOf("AUGUST"),25,8,0),LocalDateTime.of(2022,Month.valueOf("AUGUST"),26,8,0));
+        /*while(it.hasNext()) {
+            System.out.println(it.next().getTitle());
+        }*/
+        //Tasks tks=new Tasks();
+        Iterator<Task> iter=Tasks.incoming(it,LocalDateTime.of(2022,Month.valueOf("AUGUST"),25,8,0),LocalDateTime.of(2022,Month.valueOf("AUGUST"),26,8,0));
         while(iter.hasNext()){
             System.out.println(iter.next().getTitle());
         }
