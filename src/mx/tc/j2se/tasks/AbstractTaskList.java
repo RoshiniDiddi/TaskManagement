@@ -1,6 +1,7 @@
 package mx.tc.j2se.tasks;
 import java.util.Iterator;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public abstract class AbstractTaskList {
     int size;
@@ -63,6 +64,19 @@ public abstract class AbstractTaskList {
         }
         return false;
     }
+/*    public Stream<Task> getStream(AbstractTaskList at){
+        return at.stream();
 
+    }*/
+    /*public AbstractTaskList incoming(int from, int to){
+        AbstractTaskList res=new ArrayTaskList() {
+        }*/
+        /*for(int i=0;i<size;i++){
+            if(elementData[i].getStartTime()>=from && elementData[i].getEndTime()<=to){
+                res.add(elementData[i]);
+            }
+        }*/
+
+        //return res;
 
 }

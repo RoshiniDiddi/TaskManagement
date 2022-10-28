@@ -29,22 +29,22 @@ public class Tasks {
 
             //System.out.println(temp.getEndTime()+"  "+end+"   "+temp.getEndTime().isAfter(end) );
             //System.out.println(temp.getStartTime().isBefore(start));
-
+            /** Task Interval should be between input interval **/
             if (temp.getEndTime().isAfter(end) && temp.getStartTime().isBefore(start)) {
                 abs.add(temp);
             }
         }
-        //abs.display();
-        /*Iterator<Task> itr=abs.iterator();
-        while(itr.hasNext()){
-            /*System.out.println(itr.next().getTitle()+" "+itr.next().getStartTime());
-            System.out.println(itr.next().getTitle()+" "+itr.next().getEndTime());*//*
-            System.out.println(itr.next().toString());
-
-        }*/
-
         return abs.iterator();
     }
+    /*public static SortedMap<LocalDateTime, Set<Task>> calendar(Iterator<Task> tasks, LocalDateTime start, LocalDateTime end){
+        SortedMap<LocalDateTime, Set<Task>> sMap;
+        Set<Task> sTask;
+        while(tasks.hasNext()){
+            Task temp=tasks.next();
 
+        }
+        return sMap;
+    }*/
 
 }
+
