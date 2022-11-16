@@ -1,6 +1,9 @@
 package mx.tc.j2se.tasks;
+import java.time.LocalDateTime;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public abstract class AbstractTaskList {
@@ -64,19 +67,16 @@ public abstract class AbstractTaskList {
         }
         return false;
     }
-/*    public Stream<Task> getStream(AbstractTaskList at){
-        return at.stream();
+    public Stream<Task> getStream() {
+        return Stream.of(Task);
+    }
 
-    }*/
-    /*public AbstractTaskList incoming(int from, int to){
-        AbstractTaskList res=new ArrayTaskList() {
-        }*/
-        /*for(int i=0;i<size;i++){
-            if(elementData[i].getStartTime()>=from && elementData[i].getEndTime()<=to){
-                res.add(elementData[i]);
-            }
-        }*/
+    public Stream<Task> incoming(LocalDateTime from, LocalDateTime to)
+    {
 
-        //return res;
+        Stream<Task> abt1=this.getStream().filter(u-> u!=null && u.getEndTime().isAfter(to) && u.getStartTime().isBefore(from));
+
+        return abt1;
+    }
 
 }

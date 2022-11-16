@@ -1,8 +1,7 @@
 package mx.tc.j2se.tasks;
 
-
 import java.util.Arrays;
-import java.util.Objects;
+import java.util.stream.Stream;
 
 public class ArrayTaskList<task> extends AbstractTaskList{
     private static final int INITIAL_CAPACITY = 10;
@@ -69,12 +68,28 @@ public class ArrayTaskList<task> extends AbstractTaskList{
     /*public ArrayTaskList incoming(int from, int to){
         ArrayTaskList res=new ArrayTaskList();
         for(int i=0;i<size;i++){
-            if(elementData[i].getStartTime()>=from && elementData[i].getEndTime()<=to){
+            if(elementData[i].getStartTime()>=from && elementData[i].getEndTime()=<to){
                 res.add(elementData[i]);
             }
         }
         return res;
     }*/
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ArrayTaskList)) return false;
+        if (!super.equals(o)) return false;
+        ArrayTaskList<?> that = (ArrayTaskList<?>) o;
+        return Arrays.equals(elementData, that.elementData);
+    }
 
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(elementData);
+    }
+    public Stream<Task> getStream() {
+
+        return Stream.of(elementData);
+    }
 }

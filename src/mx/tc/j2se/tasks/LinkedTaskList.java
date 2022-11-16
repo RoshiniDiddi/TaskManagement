@@ -1,4 +1,8 @@
 package mx.tc.j2se.tasks;
+
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
 class Node{
     Task data;
     Node next;
@@ -101,6 +105,15 @@ public class LinkedTaskList extends AbstractTaskList {
             currentNode=currentNode.next;
         }
         return currentNode.data;
+    }
+    public Stream<Task> getStream() {
+        ArrayList<Task> a=new ArrayList<>();
+        Node current=head;
+        while(current!=null){
+            a.add(current.data);
+            current=current.next;
+        }
+        return a.stream();
     }
     /** This method returns a list of tasks which are present between from and to time **/
     /*public LinkedTaskList incoming(int from ,int to){

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Task {
-    String title;
+    private String title;
 
     @Override
     public String toString() {
@@ -20,12 +20,15 @@ public class Task {
                 '}';
     }
 
-    boolean status,repeat;
-    LocalDateTime time;
-    LocalDateTime start;
-    LocalDateTime end;
+    private boolean status,repeat;
+    private LocalDateTime time;
+    private LocalDateTime start;
+    private LocalDateTime end;
     long interval;
-    LocalDateTime current;
+    private LocalDateTime current;
+
+
+
     /*constructor for non-repetitive task*/
     Task(String title, LocalDateTime time){
         try {
@@ -39,6 +42,7 @@ public class Task {
         this.time=time;
         this.repeat=false;
         this.status=true;
+        this.current=time;
     }
     /*constructor for repetitive task*/
     Task (String title, LocalDateTime start, LocalDateTime end, long interval){
@@ -60,6 +64,7 @@ public class Task {
         this.interval=interval;
         this.repeat=true;
         this.status=true;
+        this.current=start;
     }
 
     public String getTitle() {
@@ -114,7 +119,11 @@ public class Task {
         return end;
     }
     public LocalDateTime getCurrentTime(){
+
         return this.current;
+    }
+    public void setCurrentTime(LocalDateTime current) {
+        this.current = current;
     }
     /** this method returns the interval of repetitive task
     * if task id non-repetitive then it returns 0
@@ -144,14 +153,15 @@ public class Task {
 
     /** This method returns next startTime of the task**/
     public LocalDateTime nextTimeAfter (LocalDateTime current){
-        if(current.plusHours(interval).isBefore(end)){
+        if(current.plusHours(this.getRepeatInterval()).isBefore(end)){
             status=true;
-            current=current.plusHours(interval);
+            current=current.plusHours(this.getRepeatInterval());
             return current;
         }
         else{
             status=false;
-            return LocalDateTime.parse("-1");
+            return LocalDateTime.MIN;
         }
+
     }
 }

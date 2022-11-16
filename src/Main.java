@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.util.Iterator;
+import java.util.Set;
+import java.util.SortedMap;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -129,13 +132,29 @@ public class Main {
         at.add(tk4);
         //at.display();
         Iterator<Task> it=at.iterator();
+        /*LinkedTaskList ltl =new LinkedTaskList();
+        ltl.add(tk1);
+        ltl.add(tk2);
+        ltl.add(tk3);
+        ltl.display();*/
+        /*Stream<Task> st=at.incoming(LocalDateTime.of(2022,Month.valueOf("AUGUST"),25,8,0),LocalDateTime.of(2022,Month.valueOf("AUGUST"),26,8,0));
+        st.forEach(s-> System.out.println(s));*/
+
         /*while(it.hasNext()) {
             System.out.println(it.next().getTitle());
         }*/
         //Tasks tks=new Tasks();
-        Iterator<Task> iter=Tasks.incoming(it,LocalDateTime.of(2022,Month.valueOf("AUGUST"),25,8,0),LocalDateTime.of(2022,Month.valueOf("AUGUST"),26,8,0));
+        /*Iterator<Task> iter=Tasks.incoming(it,LocalDateTime.of(2022,Month.valueOf("AUGUST"),25,8,0),LocalDateTime.of(2022,Month.valueOf("AUGUST"),26,8,0));
         while(iter.hasNext()){
             System.out.println(iter.next().getTitle());
-        }
+        }*/
+        SortedMap<LocalDateTime, Set<Task>> Result=Tasks.calendar(it,LocalDateTime.of(2022,Month.valueOf("AUGUST"),25,8,0),LocalDateTime.of(2022,Month.valueOf("AUGUST"),26,8,0));
+        System.out.println(Result);
+        /** Streams implementation **/
+        /*ArrayTaskList atl=new ArrayTaskList();
+        atl.add(tk1);
+        atl.add(tk2);
+        atl.add(tk3);
+        atl.getStream().forEach(s-> System.out.println(s));*/
     }
 }
